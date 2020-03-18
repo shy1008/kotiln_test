@@ -58,6 +58,21 @@ class Intenttest : AppCompatActivity() {
         })
 
 
+
+        btn.setOnClickListener {
+            val edt_id = edt_id.text.toString()
+            val edt_pw = edt_pw.text.toString()
+
+            val intent = Intent(this@Intenttest,Intent2::class.java)
+            intent.apply {
+                this.putExtra("login_id",edt_id)
+                this.putExtra("login_pw",edt_pw)
+            }
+            startActivityForResult(intent,1001)
+        }
+
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -70,6 +85,7 @@ class Intenttest : AppCompatActivity() {
             Log.d("data", result)
 
         } else {
+            Log.d("logout","정상 로그아웃입니다.")
 
         }
 

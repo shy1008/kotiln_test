@@ -10,17 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Intent2"></activity>
-        <activity android:name=".Intenttest">
+        <activity android:name=".RecyclerviewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".calculator">
+        <activity android:name=".fragment">
 
         </activity>
+        <activity android:name=".Intent2" />
+        <activity android:name=".Intenttest" />
+        <activity android:name=".calculator" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".EmailSignupActivity" />
         <activity android:name=".Main2Activity" />

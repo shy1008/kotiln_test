@@ -14,21 +14,40 @@ class Intent2 : AppCompatActivity() {
         setContentView(R.layout.activity_intent2)
 
 
-        val name =  intent.getStringExtra("key")
-        val name2 = intent.getStringExtra("key2")
+//        val name =  intent.getStringExtra("key")
+//        val name2 = intent.getStringExtra("key2")
+//
+//        Log.d("data",name)
+//        Log.d("data",name2)
 
-        Log.d("data",name)
-        Log.d("data",name2)
+//        intent2.setOnClickListener {
+//            val  result = name + name2
+//
+//            val  resultIntent = Intent()
+//            resultIntent.putExtra("data",result)
+//
+//            setResult(Activity.RESULT_OK,resultIntent)
+//            finish()
+//        }
 
-        intent2.setOnClickListener {
-            val  result = name + name2
 
-            val  resultIntent = Intent()
-            resultIntent.putExtra("data",result)
+        val id =intent.getStringExtra("login_id")
+        val pw =intent.getStringExtra("login_pw")
 
-            setResult(Activity.RESULT_OK,resultIntent)
+        Log.d("data",id)
+        Log.d("data",pw)
+
+        text_id.setText(id)
+        text_pw.setText(pw)
+
+        btn2.setOnClickListener {
+            val intent = Intent()
+            intent.putExtra("logout","정상적 로그아웃")
+
+            setResult(Activity.RESULT_OK,intent)
             finish()
         }
+
 
 
 
