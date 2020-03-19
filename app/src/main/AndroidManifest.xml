@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mytestapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MasterApplication"
         android:allowBackup="true"
@@ -10,16 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecyclerviewActivity">
+        <activity android:name=".Retrofit"></activity>
+        <activity android:name=".asyncRecycler" />
+        <activity android:name=".Netwrok">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".fragment">
-
-        </activity>
+        <activity android:name=".RecyclerviewActivity"></activity>
+        <activity android:name=".fragment" />
         <activity android:name=".Intent2" />
         <activity android:name=".Intenttest" />
         <activity android:name=".calculator" />
