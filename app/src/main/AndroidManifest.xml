@@ -15,11 +15,6 @@
         <activity android:name=".Retrofit"></activity>
         <activity android:name=".asyncRecycler" />
         <activity android:name=".Netwrok">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".RecyclerviewActivity"></activity>
         <activity android:name=".fragment" />
@@ -27,7 +22,13 @@
         <activity android:name=".Intenttest" />
         <activity android:name=".calculator" />
         <activity android:name=".Main3Activity" />
-        <activity android:name=".EmailSignupActivity" />
+        <activity android:name=".EmailSignupActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Main2Activity" />
         <activity android:name=".item_view" />
         <activity android:name=".MainActivity" />

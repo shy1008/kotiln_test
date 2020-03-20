@@ -22,10 +22,9 @@ class EmailSignupActivity : AppCompatActivity() {
     }
 
     fun initView(activity: Activity) {
-        usernameView = activity.findViewById((R.id.username_inpubox))
-        userPassword1View = activity.findViewById((R.id.password1_inpubox))
-        userPassword2View = activity.findViewById((R.id.password2_inpubox))
-
+        usernameView = activity.findViewById((R.id.username_inputbox))
+        userPassword1View = activity.findViewById((R.id.password1_inputbox))
+        userPassword2View = activity.findViewById((R.id.password2_inputbox))
 
     }
 
