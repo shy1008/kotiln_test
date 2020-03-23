@@ -12,11 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Retrofit"></activity>
-        <activity android:name=".asyncRecycler" />
-        <activity android:name=".Netwrok">
-        </activity>
-        <activity android:name=".RecyclerviewActivity"></activity>
+        <activity android:name=".PostListActvity"></activity>
+        <activity android:name=".PostActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Retrofit" />
+        <activity android:name=".Netwrok" />
+        <activity android:name=".RecyclerviewActivity" />
         <activity android:name=".fragment" />
         <activity android:name=".Intent2" />
         <activity android:name=".Intenttest" />

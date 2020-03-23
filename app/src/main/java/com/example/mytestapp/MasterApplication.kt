@@ -52,6 +52,8 @@ class MasterApplication : Application() {
         service = retrofit.create(RetrofitService::class.java)
     }
 
+
+
     fun checkIsLogin(): Boolean {
         val sp = getSharedPreferences("login_sp", Context.MODE_PRIVATE)
         val token = sp.getString("login_sp", "null")
