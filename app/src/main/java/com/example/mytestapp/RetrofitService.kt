@@ -1,5 +1,7 @@
 package com.example.mytestapp
 
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -33,6 +35,22 @@ interface RetrofitService{
         @Field("password")password: String
     ):Call<User>
 
-    @GET("/instagram/post/list/all/")
+    @GET("instagram/post/list/all/")
     fun getAllPOsts():Call<ArrayList<Post>>
+
+    @Multipart
+    @POST("instagram/post/")
+    fun uploadPost(
+        @Part image : MultipartBody.Part,
+        @Part ("content")requestBody: RequestBody
+    ):Call<Post>
+
+    @GET("instagram/post/list/")
+    fun getUserPostList():Call<ArrayList<Post>>
+
+    @GET("youtube/list/")
+    fun getYoutubeList():Call<ArrayList<Youtube>>
+
+    @GET("melon/list/")
+    fun  getSongList():Call<ArrayList<Song>>
 }

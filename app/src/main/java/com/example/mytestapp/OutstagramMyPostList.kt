@@ -12,59 +12,64 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import kotlinx.android.synthetic.main.activity_post.*
+import kotlinx.android.synthetic.main.activity_outstagram_my_post_list.*
+import kotlinx.android.synthetic.main.activity_outstagram_my_post_list.upload
+import kotlinx.android.synthetic.main.activity_outstagram_my_post_list.user_info
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.zip.Inflater
 
-class PostActivity : AppCompatActivity() {
+class OutstagramMyPostList : AppCompatActivity() {
 
-    lateinit var glide: RequestManager
+
+    lateinit var myPostRecyclerView: RecyclerView
+    lateinit var glide:RequestManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post)
+        setContentView(R.layout.activity_outstagram_my_post_list)
 
-        glide = Glide.with(this)
+        myPostRecyclerView = my_post_recyclerview
+        glide = Glide.with(this@OutstagramMyPostList)
+        createList()
 
-        (application as MasterApplication).service.getAllPOsts().enqueue(
+        all_list.setOnClickListener { startActivity(Intent(this@OutstagramMyPostList, PostActivity::class.java)) }
+        user_info.setOnClickListener { startActivity(Intent(this@OutstagramMyPostList, UserInfo::class.java)) }
+        upload.setOnClickListener { startActivity(Intent(this@OutstagramMyPostList, OutstagramUpload::class.java)) }
+    }
+
+    fun createList(){
+        (application as MasterApplication).service.getUserPostList().enqueue(
             object : Callback<ArrayList<Post>>{
                 override fun onFailure(call: Call<ArrayList<Post>>, t: Throwable) {
                     TODO("Not yet implemented")
                 }
-
                 override fun onResponse(
                     call: Call<ArrayList<Post>>,
                     response: Response<ArrayList<Post>>
                 ) {
-                   if (response.isSuccessful){
-                       val postList = response.body()
-                       val adapter = PostAdapter(
-                           postList!!,
-                           LayoutInflater.from(this@PostActivity),
-                           glide
-                       )
-                       post_recyclerview.adapter = adapter
-                       post_recyclerview.layoutManager =
-                           LinearLayoutManager(this@PostActivity)
-                   }
+                    if (response.isSuccessful){
+                        val myPostList = response.body()
+                        val  adapter = MyPostAdapter(
+                            myPostList!!,
+                            LayoutInflater.from(this@OutstagramMyPostList),
+                            glide
+                        )
+                        myPostRecyclerView.adapter = adapter
+                        myPostRecyclerView.layoutManager = LinearLayoutManager(this@OutstagramMyPostList)
+                    }
                 }
             }
         )
-        user_info.setOnClickListener { startActivity(Intent(this@PostActivity, UserInfo::class.java)) }
-        my_list.setOnClickListener { startActivity(Intent(this@PostActivity, OutstagramMyPostList::class.java)) }
-        upload.setOnClickListener { startActivity(Intent(this@PostActivity, OutstagramUpload::class.java)) }
     }
-
-
 }
-class PostAdapter(
+
+class MyPostAdapter(
     var postList :  ArrayList<Post>,
     val inflater: LayoutInflater,
     val glide: RequestManager
-):RecyclerView.Adapter<PostAdapter.ViewHolder>(){
-    inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+): RecyclerView.Adapter<MyPostAdapter.ViewHolder>(){
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val postOwner : TextView
         val postImage : ImageView
         val postContent : TextView
